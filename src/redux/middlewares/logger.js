@@ -1,15 +1,41 @@
-/*
- A basic middleware logger
- See http://redux.js.org/docs/advanced/Middleware.html
- */
+import logdown from 'logdown';
 
-const logger = store => next => action => {
-	console.groupCollapsed(action.type); // eslint-disable-line no-console
-	console.info('dispatching', action); // eslint-disable-line no-console
-	const result = next(action);
-	console.log('next state', store.getState()); // eslint-disable-line no-console
-	console.groupEnd(action.type); // eslint-disable-line no-console
-	return result;
+const reduxLogdown = (name, opts = {}) => {
+  const logger = logdown(name)
+  const prevLogger = logdown('prev state', { prefixColor: '#999999' });
+  const actionLogger = logdown('action', { prefixColor: '#FFCC66' });
+  const nextLogger = logdown('next state', { prefixColor: '#6699CC' });
+  prevLogger.state = actionLogger.state = nextLogger.state = logger.state = { isEnabled: true };
+  let prevState;
+
+  return store => next => action => {
+    if (!logger.state.isEnabled) {
+      return next(action);
+    }
+
+    prevState = store.getState()
+
+    if (opts.diff && typeof console.groupCollapsed === 'function') {
+      logger.groupCollapsed('*action* `' + action.type + '`');
+    }
+    else {
+      logger.log('*action* `' + action.type + '`');
+    }
+
+    if (opts.diff && typeof console.groupCollapsed === 'function') {
+      prevLogger.log(prevState);
+      actionLogger.log(action);
+    }
+
+    let result = next(action);
+
+    if (opts.diff && typeof console.groupCollapsed === 'function') {
+      nextLogger.log(store.getState());
+      logger.groupEnd('*action* `' + action.type + '`');
+    }
+
+    return result;
+  };
 };
 
-export default logger;
+export default reduxLogdown;
