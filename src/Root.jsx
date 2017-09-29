@@ -3,6 +3,7 @@ import F7 from 'framework7';
 import { Framework7, View, Router, Route } from 'preact-f7';
 
 import HomePage from './scenes/Home';
+import Administrators from './scenes/Administrators';
 
 const params = {
   view: { pushState: true }
@@ -13,6 +14,7 @@ const Root = () => (
     <View>
       <Router>
         <Route path="/" component={HomePage} />
+        <Route path="/administrators" component={Administrators} />
       </Router>
     </View>
   </Framework7>

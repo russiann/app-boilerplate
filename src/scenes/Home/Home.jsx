@@ -1,12 +1,21 @@
 import { h } from 'preact';
-import { Page, Navbar, Block } from 'preact-f7';
+import { Page, Navbar, Block, List, ListItem } from 'preact-f7';
 
 
 const Home = ({ reduxState }) => (
 	<Page name="home" >
-		<Navbar title="HomePage" />
-		<Block title="Home Page" />
-		<pre>{JSON.stringify(reduxState, null, 2)}</pre>
+		<Navbar title="Pages" />
+		
+		<Block title="Pages" />
+
+		<List links>
+			<ListItem text="Administrators" link="/administrators" />
+			<ListItem text="Roles" link="/roles" />
+			<ListItem text="Categories" link="/categories" />
+			<ListItem text="Products" link="/products" />
+			<ListItem text="Groups" link="/groups" />
+		</List>
+
 	</Page>
 );
 

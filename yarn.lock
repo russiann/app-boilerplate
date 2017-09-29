@@ -441,7 +441,7 @@ babel-code-frame@^6.11.0, babel-code-frame@^6.22.0, babel-code-frame@^6.26.0:
     esutils "^2.0.2"
     js-tokens "^3.0.2"
 
-babel-core@^6.26.0:
+babel-core@^6.1.2, babel-core@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.26.0.tgz#af32f78b31a6fcef119c87b0fd8d9753f03a0bb8"
   dependencies:
@@ -671,7 +671,7 @@ babel-plugin-syntax-export-extensions@^6.8.0:
   version "6.13.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-export-extensions/-/babel-plugin-syntax-export-extensions-6.13.0.tgz#70a1484f0f9089a4e84ad44bac353c95b9b12721"
 
-babel-plugin-syntax-jsx@^6.0.0, babel-plugin-syntax-jsx@^6.8.0:
+babel-plugin-syntax-jsx@^6.0.0, babel-plugin-syntax-jsx@^6.1.18, babel-plugin-syntax-jsx@^6.8.0:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-jsx/-/babel-plugin-syntax-jsx-6.18.0.tgz#0af32a9a6e13ca7a3fd5069e62d7b0f58d0d8946"
 
@@ -4263,6 +4263,13 @@ jsx-ast-utils@^2.0.0:
   dependencies:
     array-includes "^3.0.3"
 
+jsx-control-statements@^3.2.6:
+  version "3.2.6"
+  resolved "https://registry.yarnpkg.com/jsx-control-statements/-/jsx-control-statements-3.2.6.tgz#800da2a50559c8be4415b08e837f9a5cf2350a42"
+  dependencies:
+    babel-core "^6.1.2"
+    babel-plugin-syntax-jsx "^6.1.18"
+
 junk@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/junk/-/junk-1.0.3.tgz#87be63488649cbdca6f53ab39bec9ccd2347f592"
@@ -4558,7 +4565,7 @@ logalot@^2.1.0:
     figures "^1.3.5"
     squeak "^1.0.0"
 
-logdown@3.1.0, logdown@^3.1.0:
+logdown@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/logdown/-/logdown-3.1.0.tgz#4353d618d7d0732cff606f026df5ee4f1bd60e17"
   dependencies:
@@ -6068,12 +6075,6 @@ redux-actions@^2.0.3:
     lodash "^4.13.1"
     lodash-es "^4.17.4"
     reduce-reducers "^0.1.0"
-
-redux-logdown@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/redux-logdown/-/redux-logdown-1.0.0.tgz#fa58eac03aecfa4a1e7bbaed63de6b42d1512c6b"
-  dependencies:
-    logdown "3.1.0"
 
 redux-promise-middleware@^4.4.1:
   version "4.4.1"
