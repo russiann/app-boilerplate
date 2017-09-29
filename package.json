@@ -23,7 +23,8 @@
     "eslint": "^4.7.2",
     "eslint-config-synacor": "^2.0.0",
     "if-env": "^1.0.0",
-    "preact-cli": "^1.4.1"
+    "preact-cli": "^1.4.1",
+    "jsx-control-statements": "^3.2.6"
   },
   "dependencies": {
     "axios": "^0.16.2",
