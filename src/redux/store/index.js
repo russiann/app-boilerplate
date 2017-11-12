@@ -18,12 +18,12 @@ export default function configureStore() {
 
 	const createStoreWithMiddlewares = applyMiddleware(...middlewares)(createStoreWithDevTools);
 
-	const store = createStoreWithMiddlewares(rootReducer, loadState());
+	const store = createStoreWithMiddlewares(rootReducer);
 	window.store = store;
 
-	store.subscribe(throttle(() => {
-		saveState(store.getState(), { omit: ['framework7'] });
-	},1000))
+	// store.subscribe(throttle(() => {
+	// 	saveState(store.getState(), { omit: ['framework7'] });
+	// },1000))
   
 	return store;
 }

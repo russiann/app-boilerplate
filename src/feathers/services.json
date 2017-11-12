@@ -1,9 +1,4 @@
 {
-  "company/administrators": "administrators",
-  "company/categories": "categories",
-  "company/customers": "customers",
-  "company/products": "products",
-  "company/branches": "branches",
-  "company/groups": "groups",
-  "company/roles": "roles"
+  "customers": "customers",
+  "companies": "companies"
 }

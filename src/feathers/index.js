@@ -1,3 +1,4 @@
+import { omit } from 'lodash';
 import reduxifyServices from 'feathers-redux';
 import feathers from 'feathers-client';
 import rest from 'feathers-rest/client';
@@ -13,7 +14,8 @@ import configureFeathersOfflineFirstRealtime from './offline-first';
 |--------------------------------------------------
 */
 
-const API_ENDPOINT = 'http://localhost:3030';
+// const API_ENDPOINT = 'http://138.197.109.16:4000';
+const API_ENDPOINT = 'http://localhost:5000';
 
 export const socketClient = feathers()
   .configure(feathers.socketio(io(API_ENDPOINT)))
@@ -41,9 +43,45 @@ window.services = services;
 const extractAllReducers = (servicesConfig, services) => {
   const keys = Object.values(servicesConfig);
   return keys.reduce((obj, serviceName) => ({
-    ...obj, [serviceName]: services[serviceName].reducer
+    ...obj, [serviceName]: extractResults(services[serviceName].reducer, serviceName)
   }), {})
 }
+
+/**
+|--------------------------------------------------
+| Extract service results to a individual object
+|--------------------------------------------------
+*/
+
+const targetActions = ['find','get','create','update','patch','remove','reset','store','authenticate','logout'];
+
+export const extractResults = (reducer, serviceName) => (state = {}, action) => {
+  const [prefix, _serviceName, method, status] = action.type.split('_');
+
+  if (prefix !== 'SERVICES') {
+    return reducer(state, action);  
+  }
+
+  if (status && _serviceName.toLowerCase() === serviceName) {
+    console.log(serviceName)
+    const newState = {
+      ...state,
+      results: {
+        ...state.results,
+        [method.toLowerCase()]: omit(reducer(state, action), targetActions)
+      }
+    };
+    return newState;
+  }
+
+  return reducer(state, action);
+}
+
+/**
+|--------------------------------------------------
+| Exports reducers
+|--------------------------------------------------
+*/
 
 export const reducers = extractAllReducers(servicesConfig, services);
 

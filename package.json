@@ -23,8 +23,8 @@
     "eslint": "^4.7.2",
     "eslint-config-synacor": "^2.0.0",
     "if-env": "^1.0.0",
-    "preact-cli": "^1.4.1",
-    "jsx-control-statements": "^3.2.6"
+    "jsx-control-statements": "^3.2.6",
+    "preact-cli": "^1.4.1"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -40,8 +40,10 @@
     "preact-compat": "^3.17.0",
     "preact-redux": "^2.0.3",
     "redux": "^3.7.2",
+    "redux-logic": "^0.12.3",
     "redux-promise-middleware": "^4.4.1",
     "redux-thunk": "^2.2.0",
-    "socket.io-client": "^2.0.3"
+    "socket.io-client": "^2.0.3",
+    "validate.js": "^0.11.1"
   }
 }
