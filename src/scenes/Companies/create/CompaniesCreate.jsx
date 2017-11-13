@@ -8,8 +8,8 @@ const Input = connect(F7Input);
 class CompaniesCreate extends Component {
 
   state = {
-    company: Object.assign({}, defaults.company),
-    account: Object.assign({}, defaults.account)
+    company: { ...defaults.company },
+    account: { ...defaults.account }
   }
 
   updateForm = (form) => (data) => {
