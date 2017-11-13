@@ -1,5 +1,6 @@
 import CompaniesCreateContainer from './CompaniesCreateContainer';
 import companiesCreateReducer from './redux/reducer';
+import companiesCreateLogic from './redux/logic';
 
-export { companiesCreateReducer };
+export { companiesCreateReducer, companiesCreateLogic };
 export default CompaniesCreateContainer;

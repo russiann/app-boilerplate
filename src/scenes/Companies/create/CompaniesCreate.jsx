@@ -16,10 +16,6 @@ class CompaniesCreate extends Component {
     this.setState({ [form]: Object.assign(defaults[form], data) });
   }
 
-  componentWillReceiveProps({companies}) {
-    console.log(companies.isError, companies.isFinished, companies.isLoading, companies.isSaving)
-  }
-
   render() {
     const { companies, create } = this.props;
 
@@ -66,10 +62,6 @@ class CompaniesCreate extends Component {
         <Block>
           <Button fill big title="Registrar!" onClick={() => create(this.state)} />
         </Block>
-
-        <pre>
-          {JSON.stringify(companies, null, 2)}
-        </pre>
         
       </Page>
     )

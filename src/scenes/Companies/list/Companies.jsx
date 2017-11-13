@@ -47,8 +47,6 @@ class Customers extends Component {
             </For>
           </TableBody>
         </Table>
-
-        <pre>{JSON.stringify(companies, null, 2)}</pre>
       
       </Page>
     )

@@ -11,17 +11,23 @@ const params = {
   view: { pushState: false }
 };
 
+const Container = ({theme = 'black', children}) => (
+  <div class={`color-theme-${theme}`} style={{width: '100%', height: '100%'}} >{children}</div>
+)
+
 const Root = () => (
-  <Framework7 F7={F7} params={params}>
-    <View>
-      <Router>
-        <Route path="/" component={HomePage} />
-        <Route path="/companies" component={CompaniesList} />
-        <Route path="/companies/new" component={CompaniesCreate} />
-        <Route path="/signup" component={Signup} />
-      </Router>
-    </View>
-  </Framework7>
+  <Container>
+    <Framework7 F7={F7} params={params}>
+      <View>
+        <Router>
+          <Route path="/" component={HomePage} />
+          <Route path="/companies" component={CompaniesList} />
+          <Route path="/companies/new" component={CompaniesCreate} />
+          <Route path="/signup" component={Signup} />
+        </Router>
+      </View>
+    </Framework7>
+  </Container>
 );
 
 export default Root;

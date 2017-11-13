@@ -53,17 +53,16 @@ const extractAllReducers = (servicesConfig, services) => {
 |--------------------------------------------------
 */
 
-const targetActions = ['find','get','create','update','patch','remove','reset','store','authenticate','logout'];
+const targetActions = ['results','find','get','create','update','patch','remove','reset','store','authenticate','logout'];
 
 export const extractResults = (reducer, serviceName) => (state = {}, action) => {
-  const [prefix, name, method, status] = action.type.split('_');
+  const [prefix, name, method, targetAction] = action.type.split('_');
 
   if (prefix !== 'SERVICES') {
     return reducer(state, action);  
   }
 
-  if (status && name.toLowerCase() === serviceName) {
-    console.log(serviceName)
+  if (targetAction && name.toLowerCase() === serviceName) {
     const newState = {
       ...state,
       results: {
