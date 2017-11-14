@@ -1,5 +1,7 @@
 import { createLogic } from 'redux-logic';
 
+const app = () => window.instance;
+
 /**
 |--------------------------------------------------
 | Toast
@@ -19,7 +21,7 @@ const toast = createLogic({
     const meta = action.meta;
     if (meta && meta.toastOnFinish) {
       window.instance.toast
-        .create({ ...defaultConfig, ...meta.toastOnFinish}).open();
+        .create({ ...defaultConfig, ...meta.toastOnFinish }).open();
     }
 
     next(action);
@@ -53,13 +55,12 @@ const backOnFinish = createLogic({
 */
 
 const showPreloader = createLogic({
-  type: /^SERVICES_(.*)_CREATE/,
+  type: /^SERVICES_(.*)_(CREATE|UPDATE|PATCH|REMOVE)/,
   latest: true,
   process({ getState, action }, dispatch, next) {
 
-    const meta = action.meta;
-    if (meta && meta.showPreloader) {
-      window.instance.preloader.show();
+    if (action.meta && action.meta.showPreloader) {
+      app().preloader.show();
     }
 
     next(action);
@@ -67,13 +68,33 @@ const showPreloader = createLogic({
 });
 
 const hidePreloader = createLogic({
-  type: /^SERVICES_(.*)_CREATE_(FULFILLED|REJECTED)$/,
+  type: /^SERVICES_(.*)_(CREATE|UPDATE|PATCH|REMOVE)_(FULFILLED|REJECTED)$/,
   latest: true,
   process({ getState, action }, dispatch, next) {
 
+    if (action.meta && action.meta.showPreloader) {
+      app().preloader.hide();
+    }
+
+    next(action);
+  }
+});
+
+/**
+|--------------------------------------------------
+| Error Dialog
+|--------------------------------------------------
+*/
+
+const errorAlert = createLogic({
+  type: /^SERVICES_(.*)_(.*)_REJECTED$/,
+  latest: true,
+  process({ getState, action }, dispatch, next) {
+
+    const { name, message } = action.payload;
     const meta = action.meta;
-    if (meta && meta.showPreloader) {
-      window.instance.preloader.hide();
+    if (meta && meta.errorAlert) {
+      window.instance.dialog.alert(message, name);
     }
 
     next(action);
@@ -86,4 +107,4 @@ const hidePreloader = createLogic({
 |--------------------------------------------------
 */
 
-export default [toast, backOnFinish, hidePreloader, showPreloader];
+export default [toast, backOnFinish, hidePreloader, showPreloader, errorAlert];

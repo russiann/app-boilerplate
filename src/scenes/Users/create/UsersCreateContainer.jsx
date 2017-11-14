@@ -12,11 +12,12 @@ import { services } from '../../../feathers';
 
 const metas = {
   create: {
+    showPreloader: true,
     backOnFinish: true,
     toastOnFinish: {
       text: 'Usuário cadastrado com sucesso!'
     },
-    showPreloader: true
+    errorAlert: true
   }
 };
 
