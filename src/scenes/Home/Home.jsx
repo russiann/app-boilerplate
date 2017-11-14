@@ -1,10 +1,15 @@
 import { h } from 'preact';
-import { Page, Navbar, Block, List, ListItem } from 'preact-f7';
+import { Page, Navbar, Block, List, ListItem, Icon, Button } from 'preact-f7';
 
 
 const Home = ({ reduxState }) => (
 	<Page name="home" >
-		<Navbar title="Supermenu Admin" />
+		<Navbar
+			left={<Icon ifIos="material:list" ifMaterial="material:menu" navbarIcon openPanel />}
+			title="Dashboard"
+			disableBackButton
+			leftOpenModal="left"
+		/>
 		
 		<Block title="Pages" />
 
@@ -18,6 +23,8 @@ const Home = ({ reduxState }) => (
 			<ListItem text="Companies" link="/companies" />
 			<ListItem text="New Company" link="/companies/new" />
 		</List>
+
+		<Button raised openPanel>Open left panel</Button>
 
 	</Page>
 );

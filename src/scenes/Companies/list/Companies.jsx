@@ -1,6 +1,6 @@
 import { h, Component } from 'preact';
 import { Page, Navbar, Block, List, ListItem } from 'preact-f7';
-import { Table, TableHeader, TableRow, TableCell, TableBody } from 'preact-f7';
+import { Table, TableHeader, TableRow, TableCell, TableBody, Icon } from 'preact-f7';
 
 class Customers extends Component {
 
@@ -22,31 +22,46 @@ class Customers extends Component {
     const { companies } = this.props;
 
     return (
-      <Page >
-        <Navbar title="Companies" />
+      <Page name="Companies" >
+        <Navbar
+          title="Companies"
+          left={<Icon ifIos="material:list" ifMaterial="material:menu" navbarIcon openPanel />}
+          disableBackButton
+          leftOpenModal="left"
+        />
 
-        <Table card>
-          <TableHeader>
-            <TableRow>
-              <TableCell header label>Moip ID</TableCell>
-              <TableCell header label>Nome</TableCell>
-              <TableCell header label>Slug</TableCell>
-              <TableCell header label>Token</TableCell>
-              <TableCell header label>Link</TableCell>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            <For each="item" of={companies.store.records}>
-              <TableRow key={item._id}>
-                <TableCell label>{item.account.id}</TableCell>
-                <TableCell label>{item.name}</TableCell>
-                <TableCell label>{item.slug}</TableCell>
-                <TableCell label>{item.account.accessToken}</TableCell>
-                <TableCell label>{item.link}</TableCell>
+        <If condition={
+          companies &&
+          companies.store &&
+          companies.store.records
+        }>
+
+          <Table card>
+            <TableHeader>
+              <TableRow>
+                <TableCell header label>Moip ID</TableCell>
+                <TableCell header label>Nome</TableCell>
+                <TableCell header label>Slug</TableCell>
+                <TableCell header label>Token</TableCell>
+                <TableCell header label>Link</TableCell>
               </TableRow>
-            </For>
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              <For each="item" of={companies.store.records}>
+                <TableRow key={item._id}>
+                  <TableCell label>{item.account.id}</TableCell>
+                  <TableCell label>{item.name}</TableCell>
+                  <TableCell label>{item.slug}</TableCell>
+                  <TableCell label>{item.account.accessToken}</TableCell>
+                  <TableCell label>
+                    <a href={item.link} target="_blank">{item.link}</a>
+                  </TableCell>
+                </TableRow>
+              </For>
+            </TableBody>
+          </Table>
+
+        </If>
       
       </Page>
     )

@@ -1,6 +1,6 @@
 import { h, Component } from 'preact';
 import { Page, Navbar, Block, List, ListItem, Button } from 'preact-f7';
-import { Form as F7Form, Input as F7Input } from 'preact-f7';
+import { Form as F7Form, Input as F7Input, Icon } from 'preact-f7';
 import { Form, connect } from '../../../components/Form';
 
 const Input = connect(F7Input);
@@ -20,8 +20,14 @@ class CompaniesCreate extends Component {
     const { companies, create } = this.props;
 
     return (
-      <Page name="Signup" >
-        <Navbar title="New Company" />
+      <Page name="NewCompany" >
+        <Navbar
+          title="New Company"
+          left={<Icon ifIos="material:list" ifMaterial="material:menu" navbarIcon openPanel />}
+          disableBackButton
+          leftOpenModal="left"
+        />
+        
 
         <Block title="Company Infos" />
         <Form data={this.state.company} onChange={this.updateForm('company')} >

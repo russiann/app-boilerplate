@@ -1,14 +1,32 @@
 import { h } from 'preact';
-import F7 from 'framework7';
-import { Framework7, View, Router, Route } from 'preact-f7';
+import { Framework7, View, Router, Route, Panel } from 'preact-f7';
 
+import Drawer from './scenes/Drawer';
 import HomePage from './scenes/Home';
 import CompaniesList from './scenes/Companies/list';
 import CompaniesCreate from './scenes/Companies/create';
 import Signup from './scenes/Signup';
 
+/**
+|--------------------------------------------------
+| Framework7
+|--------------------------------------------------
+*/
+
+import { Framework7 as F7 } from 'framework7';
+import configF7 from './framework7.config';
+
+configF7(F7);
+
+/**
+|--------------------------------------------------
+| 
+|--------------------------------------------------
+*/
+
 const params = {
-  view: { pushState: false }
+  theme: 'md',
+  view: { pushState: true, animate: false, preloadPreviousPage: false }
 };
 
 const Container = ({theme = 'black', children}) => (
@@ -18,6 +36,8 @@ const Container = ({theme = 'black', children}) => (
 const Root = () => (
   <Container>
     <Framework7 F7={F7} params={params}>
+      <div class="panel-backdrop"></div>
+      <Panel left cover component={<Drawer />} />
       <View>
         <Router>
           <Route path="/" component={HomePage} />
