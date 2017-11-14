@@ -2317,9 +2317,9 @@ dom-urls@^1.1.0:
   dependencies:
     urijs "^1.16.1"
 
-dom7@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/dom7/-/dom7-2.0.0.tgz#67ad454f9a7d2cdb53780fa601506dfb7933be81"
+dom7@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/dom7/-/dom7-2.0.1.tgz#a8a2c802cf17c20b051d9414143061472201a233"
 
 domain-browser@^1.1.1:
   version "1.1.7"
@@ -3229,12 +3229,12 @@ forwarded@~0.1.0:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
 
-framework7@^2.0.0-beta.8:
-  version "2.0.0-beta.8"
-  resolved "https://registry.yarnpkg.com/framework7/-/framework7-2.0.0-beta.8.tgz#a70a272d07ec9122cd7aad97777f8d3fdc03155a"
+framework7@^2.0.0-beta.16:
+  version "2.0.0-beta.16"
+  resolved "https://registry.yarnpkg.com/framework7/-/framework7-2.0.0-beta.16.tgz#6c92a48fd2eeb3ed426a47ed13e656ad34a196aa"
   dependencies:
-    dom7 "^2.0.0"
-    template7 "^1.3.0"
+    dom7 "^2.0.1"
+    template7 "^1.3.1"
 
 fresh@0.5.2:
   version "0.5.2"
@@ -6987,9 +6987,9 @@ tempfile@^1.0.0:
     os-tmpdir "^1.0.0"
     uuid "^2.0.1"
 
-template7@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/template7/-/template7-1.3.0.tgz#79f74ad2cca8487a18165d2bb5c9b75c8a5db4e2"
+template7@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/template7/-/template7-1.3.1.tgz#f01eedf72665f37d9f4db737b4025663d9d39916"
 
 text-hex@0.0.x:
   version "0.0.0"
