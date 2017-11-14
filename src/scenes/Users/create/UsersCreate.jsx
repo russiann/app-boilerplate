@@ -12,7 +12,7 @@ class UsersCreate extends Component {
   }
 
   updateForm = (form) => (data) => {
-    this.setState({ [form]: Object.assign(defaults[form], data) });
+    this.setState({ [form]: Object.assign({}, defaults[form], data) });
   }
 
   render() {
