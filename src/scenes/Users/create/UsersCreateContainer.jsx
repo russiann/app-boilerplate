@@ -1,5 +1,5 @@
 import { connect } from 'preact-redux';
-import Companies from './CompaniesCreate';
+import Users from './UsersCreate';
 import metalize from '../../../helpers/metalize';
 
 import { services } from '../../../feathers';
@@ -14,7 +14,7 @@ const metas = {
   create: {
     backOnFinish: true,
     toastOnFinish: {
-      text: 'Empresa cadastrada com sucesso!'
+      text: 'Usuário cadastrado com sucesso!'
     },
     showPreloader: true
   }
@@ -27,20 +27,16 @@ const metas = {
 */
 
 const mapStateToProps = (state) => ({
-  companies: state.companies
+  users: state.users
 });
 
 const mapDispatchToProps = {
-  create: metalize(metas.create, services.companies.create),
-  get: services.companies.get,
-  patch: services.companies.patch,
-  remove: services.companies.remove,
-  find: services.companies.find
+  create: metalize(metas.create, services.users.create)
 };
 
-const CompaniesContainer = connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(Companies);
+const UsersContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Users);
 
-export default CompaniesContainer;
+export default UsersContainer;

@@ -15,7 +15,7 @@ import configureFeathersOfflineFirstRealtime from './offline-first';
 */
 
 // const API_ENDPOINT = 'http://138.197.109.16:4000';
-const API_ENDPOINT = 'http://localhost:5000';
+const API_ENDPOINT = 'http://localhost:3030';
 
 export const socketClient = feathers()
   .configure(feathers.socketio(io(API_ENDPOINT)))

@@ -10,8 +10,8 @@ const Drawer = () => (
 			<ListItem text="Products" link="/products" />
 			<ListItem text="Groups" link="/groups" /> */}
       {/* <ListItem text="Sign Up" link="/signup" /> */}
-      <ListItem text="Companies" link="/companies" closePanel />
-      <ListItem text="New Company" link="/companies/new" closePanel />
+      <ListItem text="Home" link="/" closePanel />
+      <ListItem text="Users" link="/users" closePanel />
     </List>
   </Page>
 );

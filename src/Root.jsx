@@ -3,8 +3,8 @@ import { Framework7, View, Router, Route, Panel } from 'preact-f7';
 
 import Drawer from './scenes/Drawer';
 import HomePage from './scenes/Home';
-import CompaniesList from './scenes/Companies/list';
-import CompaniesCreate from './scenes/Companies/create';
+import UsersList from './scenes/Users/list';
+import UsersCreate from './scenes/Users/create';
 import Signup from './scenes/Signup';
 
 /**
@@ -41,8 +41,8 @@ const Root = () => (
       <View>
         <Router>
           <Route path="/" component={HomePage} />
-          <Route path="/companies" component={CompaniesList} />
-          <Route path="/companies/new" component={CompaniesCreate} />
+          <Route path="/users" component={UsersList} />
+          <Route path="/users/new" component={UsersCreate} />
           <Route path="/signup" component={Signup} />
         </Router>
       </View>

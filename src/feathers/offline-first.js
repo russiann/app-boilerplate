@@ -2,11 +2,18 @@ import Realtime from 'feathers-offline-realtime';
 
 export default (store, socketClient, services) => {
 
-  const companies = socketClient.service('/companies');
-  const companiesRealtime = new Realtime(companies, { sort: Realtime.sort('title') });
+  const users = socketClient.service('/users');
+  const usersRealtime = new Realtime(users, { sort: Realtime.sort('title') });
 
-  companiesRealtime.on('events', (records, last) => {
-    store.dispatch(services.companies.store({ connected: companiesRealtime.connected, last, records, whatever: [1,2,3,4,5] }));
+  usersRealtime.on('events', (records, last) => {
+    store.dispatch(services.users.store({ connected: usersRealtime.connected, last, records }));
+  });
+  
+  const roles = socketClient.service('/roles');
+  const rolesRealtime = new Realtime(roles, { sort: Realtime.sort('title') });
+
+  rolesRealtime.on('events', (records, last) => {
+    store.dispatch(services.roles.store({ connected: rolesRealtime.connected, last, records }));
   });
 
   /**
@@ -15,7 +22,10 @@ export default (store, socketClient, services) => {
   |--------------------------------------------------
   */
 
-  companiesRealtime.connect()
-    .then(() => console.log('[products] Realtime replication started'));
+  usersRealtime.connect()
+    .then(() => console.log('[users] Realtime replication started'));
+  
+  rolesRealtime.connect()
+    .then(() => console.log('[roles] Realtime replication started'));
 
 };

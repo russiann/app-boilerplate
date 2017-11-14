@@ -1,4 +1,4 @@
 {
-  "customers": "customers",
-  "companies": "companies"
+  "users": "users",
+  "roles": "roles"
 }
