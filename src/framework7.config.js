@@ -1,5 +1,5 @@
 import {
-  Panel, Preloader, Toast, Fab
+  Panel, Preloader, Toast, Fab, Dialog
 } from 'framework7';
 
 export default (Framework7) => {
@@ -8,6 +8,7 @@ export default (Framework7) => {
     .use(Panel)
     .use(Toast)
     .use(Fab)
+    .use(Dialog)
     .use(Preloader);
   
 };
