@@ -55,7 +55,7 @@ const backOnFinish = createLogic({
 */
 
 const showPreloader = createLogic({
-  type: /^SERVICES_(.*)_(CREATE|UPDATE|PATCH|REMOVE)/,
+  type: /^SERVICES_(.*)_(.*)/,
   latest: true,
   process({ getState, action }, dispatch, next) {
 
@@ -68,12 +68,12 @@ const showPreloader = createLogic({
 });
 
 const hidePreloader = createLogic({
-  type: /^SERVICES_(.*)_(CREATE|UPDATE|PATCH|REMOVE)_(FULFILLED|REJECTED)$/,
+  type: /^SERVICES_(.*)_(.*)_(FULFILLED|REJECTED)$/,
   latest: true,
   process({ getState, action }, dispatch, next) {
 
     if (action.meta && action.meta.showPreloader) {
-      app().preloader.hide();
+      setTimeout(app().preloader.hide, 500);
     }
 
     next(action);

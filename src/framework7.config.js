@@ -1,5 +1,5 @@
 import {
-  Panel, Preloader, Toast, Fab, Dialog
+  Panel, Preloader, Toast, Fab, Dialog, Input, DataTable, Checkbox, Form
 } from 'framework7';
 
 export default (Framework7) => {
@@ -9,6 +9,10 @@ export default (Framework7) => {
     .use(Toast)
     .use(Fab)
     .use(Dialog)
+    .use(Input)
+    .use(DataTable)
+    .use(Checkbox)
+    .use(Form)
     .use(Preloader);
   
 };

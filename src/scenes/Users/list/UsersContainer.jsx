@@ -4,7 +4,7 @@ import Users from './Users';
 import { services } from '../../../feathers';
 
 const mapStateToProps = (state) => ({
-  users:	state.users
+  users:	state.users.snapshot
 });
 
 const mapDispatchToProps = {

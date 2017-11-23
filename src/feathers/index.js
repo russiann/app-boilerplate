@@ -1,12 +1,14 @@
 import { omit } from 'lodash';
 import reduxifyServices from 'feathers-redux';
 import feathers from 'feathers-client';
+import feathersAuth from 'feathers-authentication-client';
 import rest from 'feathers-rest/client';
 import io from 'socket.io-client';
 import axios from 'axios';
-
+import feathersReduxifyAuthentication from 'feathers-reduxify-authentication'
 import servicesConfig from './services';
 import configureFeathersOfflineFirstRealtime from './offline-first';
+import methodReducer from './methodReducer';
 
 /**
 |--------------------------------------------------
@@ -23,7 +25,17 @@ export const socketClient = feathers()
 
 export const restClient = feathers()
   .configure(rest(API_ENDPOINT).axios(axios))
+  .configure(feathersAuth({ storage: localStorage }))
   .configure(feathers.hooks());
+
+
+/**
+|--------------------------------------------------
+| Feathers Authentication
+|--------------------------------------------------
+*/
+
+export const authentication = feathersReduxifyAuthentication(restClient, {});
 
 /**
 |--------------------------------------------------
@@ -31,7 +43,10 @@ export const restClient = feathers()
 |--------------------------------------------------
 */
 
-export const services = reduxifyServices(restClient, servicesConfig);
+export const services = {
+  authentication, 
+  ...reduxifyServices(restClient, servicesConfig)
+};
 window.services = services;
 
 /**
@@ -43,7 +58,15 @@ window.services = services;
 const extractAllReducers = (servicesConfig, services) => {
   const keys = Object.values(servicesConfig);
   return keys.reduce((obj, serviceName) => ({
-    ...obj, [serviceName]: extractResults(services[serviceName].reducer, serviceName)
+    ...obj, [serviceName]: methodReducer(services[serviceName].reducer, {
+      find:     'find',
+      get:      'get',
+      create:   'create',
+      update:   'update',
+      patch:    'patch',
+      delete:   'delete',
+      snapshot: 'store'
+    })
   }), {})
 }
 
@@ -82,7 +105,10 @@ export const extractResults = (reducer, serviceName) => (state = {}, action) => 
 |--------------------------------------------------
 */
 
-export const reducers = extractAllReducers(servicesConfig, services);
+export const reducers = {
+  authentication: authentication.reducer,
+  ...extractAllReducers(servicesConfig, services)
+};
 
 /**
 |--------------------------------------------------
@@ -92,4 +118,24 @@ export const reducers = extractAllReducers(servicesConfig, services);
 
 export const configureOfflineFirstRealtime = (store) => {
   configureFeathersOfflineFirstRealtime(store, socketClient, services);
+}
+
+/**
+|--------------------------------------------------
+| Temporary Fix
+|--------------------------------------------------
+*/
+
+export const startAuthentication = () => {
+  return new Promise((resolve, reject) => {
+    if (window.store.getState().authentication.isSignedIn) {
+      return true;
+    }
+
+    if (localStorage['feathers-jwt']) {
+      return resolve(window.store.dispatch(authentication.authenticate()).payload.promise)
+    }
+
+    return reject(false);
+  });
 }

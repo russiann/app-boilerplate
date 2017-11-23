@@ -44,6 +44,7 @@ class Form extends Component {
   getChildContext() {
     return {
       data: this.props.data,
+      defaultData: this.props.defaultData,
       validation: this.props.validation,
       onChange: this.handleOnChange
     };
@@ -54,6 +55,14 @@ class Form extends Component {
     this.setState({
       data: createFormDataObject(this.props.data)
     });
+
+    
+  }
+
+  componentDidMount() {
+    if (this.props.defaultData) {
+      this.props.onChange(this.props.defaultData);
+    }
   }
 
 

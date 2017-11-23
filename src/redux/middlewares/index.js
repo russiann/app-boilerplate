@@ -12,17 +12,14 @@ import logic from './logic';
 |--------------------------------------------------
 */
 
-import { companiesCreateLogic } from '../../scenes/Companies/create';
-
 const logicMiddlewares = [
-  ...companiesCreateLogic,
-  ...logic,
+  ...logic
 ];
 
 
 export default [
   createLogicMiddleware(logicMiddlewares),
-  // logger('store', { diff: true }),
+  logger('store', { diff: true }),
   reduxThunk,
   reduxPromiseMiddleware()
 ];

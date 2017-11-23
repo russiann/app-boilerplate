@@ -11,6 +11,10 @@ class UsersCreate extends Component {
     user: { ...defaults.user }
   }
 
+  redirect = () => {
+    window.instance.router.navigate({ url: '/users' });
+  }
+
   updateForm = (form) => (data) => {
     this.setState({ [form]: Object.assign({}, defaults[form], data) });
   }
@@ -36,6 +40,8 @@ class UsersCreate extends Component {
             <Input name="Password" type="password" label="Password" placeholder="********" />
           </F7Form>
         </Form>
+
+        <Button title="Redirect" onClick={this.redirect} />
 
         <Block>
           <Button fill big title="Cadastrar" onClick={() => create(this.state.user)} />

@@ -3010,6 +3010,13 @@ feathers-redux@^1.1.0:
     redux "^3.7.2"
     redux-actions "^2.0.3"
 
+feathers-reduxify-authentication@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/feathers-reduxify-authentication/-/feathers-reduxify-authentication-1.0.1.tgz#cfcee156d8353f732ea127b603e5fc2bc3928004"
+  dependencies:
+    debug "^2.2.0"
+    object.assign "^4.0.4"
+
 feathers-rest@1.8.0, feathers-rest@^1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/feathers-rest/-/feathers-rest-1.8.0.tgz#3c03f1ea56adec940a8f9823d87a3aafeb9742a9"
@@ -5017,7 +5024,7 @@ object-keys@^1.0.10, object-keys@^1.0.8:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/object-keys/-/object-keys-1.0.11.tgz#c54601778ad560f1142ce0e01bcca8b56d13426d"
 
-object.assign@^4.0.1:
+object.assign@^4.0.1, object.assign@^4.0.4:
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/object.assign/-/object.assign-4.0.4.tgz#b1c9cc044ef1b9fe63606fc141abbb32e14730cc"
   dependencies:
