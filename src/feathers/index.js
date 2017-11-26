@@ -1,8 +1,9 @@
 import { omit } from 'lodash';
 import reduxifyServices from 'feathers-redux';
-import feathers from '@feathersjs/client';
+import feathers from '@feathersjs/feathers';
 import feathersAuth from '@feathersjs/authentication-client';
 import rest from '@feathersjs/rest-client';
+import socketio from '@feathersjs/socketio-client';
 import io from 'socket.io-client';
 import axios from 'axios';
 import feathersReduxifyAuthentication from 'feathers-reduxify-authentication'
@@ -20,7 +21,8 @@ import methodReducer from './methodReducer';
 const API_ENDPOINT = 'http://localhost:3030';
 
 export const socketClient = feathers()
-  .configure(feathers.socketio(io(API_ENDPOINT)));
+  .configure(socketio(io(API_ENDPOINT)))
+  .configure(feathersAuth({ storage: localStorage }));
 
 export const restClient = feathers()
   .configure(rest(API_ENDPOINT).axios(axios))
@@ -33,7 +35,11 @@ export const restClient = feathers()
 |--------------------------------------------------
 */
 
-export const authentication = feathersReduxifyAuthentication(restClient, {});
+/*
+  For real-time works on Feathers v3 you must use socketClient
+  in authentication and new Channels features will works
+*/ 
+export const authentication = feathersReduxifyAuthentication(socketClient, {});
 
 /**
 |--------------------------------------------------
