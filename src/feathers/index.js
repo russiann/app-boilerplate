@@ -76,35 +76,6 @@ const extractAllReducers = (servicesConfig, services) => {
 
 /**
 |--------------------------------------------------
-| Extract service results to a individual object
-|--------------------------------------------------
-*/
-
-const targetActions = ['results','find','get','create','update','patch','remove','reset','store','authenticate','logout'];
-
-export const extractResults = (reducer, serviceName) => (state = {}, action) => {
-  const [prefix, name, method, targetAction] = action.type.split('_');
-
-  if (prefix !== 'SERVICES') {
-    return reducer(state, action);  
-  }
-
-  if (targetAction && name.toLowerCase() === serviceName) {
-    const newState = {
-      ...state,
-      results: {
-        ...state.results,
-        [method.toLowerCase()]: omit(reducer(state, action), targetActions)
-      }
-    };
-    return newState;
-  }
-
-  return reducer(state, action);
-}
-
-/**
-|--------------------------------------------------
 | Exports reducers
 |--------------------------------------------------
 */
