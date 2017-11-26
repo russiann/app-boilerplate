@@ -27,12 +27,12 @@
     "preact-cli": "^1.4.1"
   },
   "dependencies": {
+    "@feathersjs/client": "^3.1.0",
+    "@feathersjs/express": "^1.1.2",
     "axios": "^0.16.2",
-    "feathers-client": "^2.4.0",
     "feathers-offline-realtime": "^0.1.2",
     "feathers-redux": "^1.1.0",
     "feathers-reduxify-authentication": "^1.0.1",
-    "feathers-rest": "^1.8.0",
     "framework7": "^2.0.0-beta.16",
     "lodash": "^4.17.4",
     "logdown": "^3.1.0",

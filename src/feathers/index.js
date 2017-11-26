@@ -1,8 +1,8 @@
 import { omit } from 'lodash';
 import reduxifyServices from 'feathers-redux';
-import feathers from 'feathers-client';
-import feathersAuth from 'feathers-authentication-client';
-import rest from 'feathers-rest/client';
+import feathers from '@feathersjs/client';
+import feathersAuth from '@feathersjs/authentication-client';
+import rest from '@feathersjs/rest-client';
 import io from 'socket.io-client';
 import axios from 'axios';
 import feathersReduxifyAuthentication from 'feathers-reduxify-authentication'
@@ -20,13 +20,11 @@ import methodReducer from './methodReducer';
 const API_ENDPOINT = 'http://localhost:3030';
 
 export const socketClient = feathers()
-  .configure(feathers.socketio(io(API_ENDPOINT)))
-  .configure(feathers.hooks());
+  .configure(feathers.socketio(io(API_ENDPOINT)));
 
 export const restClient = feathers()
   .configure(rest(API_ENDPOINT).axios(axios))
-  .configure(feathersAuth({ storage: localStorage }))
-  .configure(feathers.hooks());
+  .configure(feathersAuth({ storage: localStorage }));
 
 
 /**
