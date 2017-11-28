@@ -1,5 +1,5 @@
 import { connect } from 'preact-redux';
-import Login from './Login';
+import Signin from './Signin';
 import metalize from '../../helpers/metalize';
 
 import { services } from '../../feathers';
@@ -23,17 +23,15 @@ const metas = {
 |--------------------------------------------------
 */
 
-const mapStateToProps = (state) => ({
-
-});
+const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = {
   authenticate: metalize(metas.authenticate, services.authentication.authenticate)
 };
 
-const LoginContainer = connect(
+const SigninContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Login);
+)(Signin);
 
-export default LoginContainer;
+export default SigninContainer;

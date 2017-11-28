@@ -23,7 +23,7 @@ class Home extends Component {
     const { authenticate } = this.props;
 
     return (
-      <Page name="Dashboard" className="login-screen-content">
+      <Page name="Signin" className="login-screen-content">
 
         <div class="login-screen-title">MyApp</div>
 

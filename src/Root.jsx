@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { Framework7, View, Router, Route, Panel } from 'preact-f7';
 
-import Login from './scenes/Login';
+import Signin from './scenes/Signin';
 import Drawer from './scenes/Drawer';
 import HomePage from './scenes/Home';
 import UsersList from './scenes/Users/list';
@@ -69,7 +69,7 @@ const Root = () => (
       <View>
         <Router>
           <Route path="/" component={HomePage} />
-          <Route path="/signin" component={Login} />
+          <Route path="/signin" component={Signin} />
           <Route path="/users" component={UsersList} protected={auth} />
           <Route path="/users/new" component={UsersCreate} />
           <Route path="/users/:id" component={UsersEdit} />
