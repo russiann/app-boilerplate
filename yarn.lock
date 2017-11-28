@@ -5659,9 +5659,9 @@ preact-compat@^3.14.3, preact-compat@^3.17.0:
     prop-types "^15.5.8"
     standalone-react-addons-pure-render-mixin "^0.1.1"
 
-preact-f7@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/preact-f7/-/preact-f7-0.1.0.tgz#dbc1fe5032e711dc9888e89aa6b4e284f58afa1c"
+preact-f7@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/preact-f7/-/preact-f7-0.1.2.tgz#7a30d25fcc01be6ea9bcb81ad85aa9a551ad0f11"
   dependencies:
     create-classname "^1.0.15"
     lodash "^4.17.4"

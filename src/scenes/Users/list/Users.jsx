@@ -21,6 +21,10 @@ class Users extends Component {
     window.instance.router.navigate({ url: '/users/new' });
   }
 
+  edit = (id) => {
+    window.instance.router.navigate({ url: `/users/${id}` });
+  }
+
   render() {
     const { users } = this.props;
 
@@ -38,7 +42,6 @@ class Users extends Component {
           <Table card>
             <TableHeader>
               <TableRow>
-                <TableCell header checkbox />
                 <TableCell header label>ID</TableCell>
                 <TableCell header label>Name</TableCell>
                 <TableCell header label>E-mail</TableCell>
@@ -46,8 +49,7 @@ class Users extends Component {
             </TableHeader>
             <TableBody>
               <For each="user" of={users.store.records}>
-                <TableRow key={user._id}>
-                  <TableCell checkbox />
+                <TableRow key={user._id} onClick={() => this.edit(user._id)}>
                   <TableCell label>{user._id}</TableCell>
                   <TableCell label>{user.name}</TableCell>
                   <TableCell label>{user.email}</TableCell>

@@ -41,7 +41,7 @@ const backOnFinish = createLogic({
 
     const meta = action.meta;
     if (meta && meta.backOnFinish) {
-      window.instance.router.back();
+      window.history.back();
     }
 
     next(action);

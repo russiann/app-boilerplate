@@ -8,7 +8,7 @@ const Input = connect(F7Input);
 class UsersCreate extends Component {
 
   state = {
-    user: { ...defaults.user }
+    user: {}
   }
 
   redirect = () => {
@@ -16,7 +16,7 @@ class UsersCreate extends Component {
   }
 
   updateForm = (form) => (data) => {
-    this.setState({ [form]: Object.assign({}, defaults[form], data) });
+    this.setState({ [form]: Object.assign({}, data) });
   }
 
   render() {

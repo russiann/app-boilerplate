@@ -27,6 +27,10 @@ html, body {
 	z-index: 10000000;
 }
 
+.fab {
+  position: fixed!important;
+}
+
 /* 
 	Fonts
 */

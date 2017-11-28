@@ -8,7 +8,7 @@ const Input = connect(F7Input);
 class UsersCreate extends Component {
 
   state = {
-    user: { ...defaults.user }
+    user: {}
   }
 
   componentDidMount() {
@@ -19,30 +19,24 @@ class UsersCreate extends Component {
     });
   }
 
-  redirect = () => {
-    window.instance.router.navigate({ url: '/users' });
-  }
-
   updateForm = (form) => (data) => {
-    this.setState({ [form]: Object.assign({}, defaults[form], data) });
+    this.setState({ [form]: Object.assign({}, data) });
   }
 
   render() {
-    const { users, create } = this.props;
+    const { users, patch } = this.props;
 
     return (
-      <Page name="NewUser" >
+      <Page name="EditUser" >
         <Navbar
-          title="New User"
+          title="Edit User"
           left={<Icon ifIos="material:list" ifMaterial="material:menu" navbarIcon openPanel />}
           disableBackButton
           leftOpenModal="left"
         />
-        
 
         <Block title="Users Infos" />
 
-        {console.log(users)}
         <If condition={users.get && users.get.isFinished}>
 
           <Form data={this.state.user} defaultData={users.get.data} onChange={this.updateForm('user')} >
@@ -53,10 +47,8 @@ class UsersCreate extends Component {
             </F7Form>
           </Form>
 
-          <Button title="Redirect" onClick={this.redirect} />
-
           <Block>
-            <Button fill big title="Salvar" onClick={() => create(this.state.user)} />
+            <Button fill big title="Salvar" onClick={() => patch(users.get.data._id, this.state.user)} />
           </Block>
 
         </If>
@@ -65,13 +57,5 @@ class UsersCreate extends Component {
     )
   }
 }
-
-const defaults = {
-  user: {
-    name: '',
-    email: '',
-    password: ''
-  }
-};
 
 export default UsersCreate;

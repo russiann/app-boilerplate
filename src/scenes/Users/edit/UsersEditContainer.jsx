@@ -18,6 +18,7 @@ const metas = {
   patch: {
     showPreloader: true,
     errorAlert: true,
+    backOnFinish: true,
     toastOnFinish: {
       text: 'Usuário editado com sucesso!'
     }
