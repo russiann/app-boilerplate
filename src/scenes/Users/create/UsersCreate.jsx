@@ -41,8 +41,6 @@ class UsersCreate extends Component {
           </F7Form>
         </Form>
 
-        <Button title="Redirect" onClick={this.redirect} />
-
         <Block>
           <Button fill big title="Cadastrar" onClick={() => create(this.state.user)} />
         </Block>
