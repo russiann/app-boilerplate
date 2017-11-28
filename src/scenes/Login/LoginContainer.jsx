@@ -27,8 +27,6 @@ const mapStateToProps = (state) => ({
 
 });
 
-console.log('>', services.authentication.authenticate);
-
 const mapDispatchToProps = {
   authenticate: metalize(metas.authenticate, services.authentication.authenticate)
 };
