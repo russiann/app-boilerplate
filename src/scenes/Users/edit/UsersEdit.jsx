@@ -23,6 +23,10 @@ class UsersCreate extends Component {
     this.setState({ [form]: Object.assign({}, data) });
   }
 
+  getUserName = (users) => {
+    return users.get.data ? users.get.data.name : false
+  }
+
   render() {
     const { users, patch, remove } = this.props;
 
@@ -30,6 +34,7 @@ class UsersCreate extends Component {
       <Page name="EditUser" >
         <Navbar
           title="Edit User"
+          subtitle={this.getUserName(users)}
           left={<Icon ifIos="material:list" ifMaterial="material:menu" navbarIcon openPanel />}
           disableBackButton
           leftOpenModal="left"
@@ -37,18 +42,17 @@ class UsersCreate extends Component {
 
         <Block title="Users Infos" />
 
-        <If condition={users.get && users.get.isFinished}>
+        <If condition={users.get && !users.get.getPending}>
 
           <Form data={this.state.user} defaultData={users.get.data} onChange={this.updateForm('user')} >
             <F7Form >
               <Input name="name" type="text" label="Name" placeholder="User name" />
               <Input name="email" type="text" label="E-mail" placeholder="User e-mail" />
-              <Input name="Password" type="password" label="Password" placeholder="********" />
             </F7Form>
           </Form>
 
           <Block>
-            <Button fill big title="Deletar" onClick={() => remove(users.get.data._id)} />
+            <Button big color="red" title="Deletar" onClick={() => remove(users.get.data._id)} />
           </Block>
 
           <Block>
