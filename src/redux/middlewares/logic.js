@@ -1,4 +1,5 @@
 import { createLogic } from 'redux-logic';
+import metalize from '../../helpers/metalize';
 
 const app = () => window.instance;
 
@@ -101,10 +102,35 @@ const errorAlert = createLogic({
   }
 });
 
+
+/**
+|--------------------------------------------------
+| Foo
+|--------------------------------------------------
+*/
+
+const fooBar = createLogic({
+  type: /^BEFORE_PROCCESS_FEATHERS_PAYLOAD$/,
+  latest: true,
+  process({ getState, action }, dispatch, next) {
+
+    const { name, message } = action.payload;
+    const meta = action.meta;
+    if (meta && meta.confirmDialog) {
+      window.instance.dialog.confirm(meta.confirmDialog.message, meta.confirmDialog.title, () => {
+        dispatch(
+          metalize(meta, action.payload.action)(...action.payload.args)
+        );
+      });
+    }
+
+  }
+});
+
 /**
 |--------------------------------------------------
 | Export
 |--------------------------------------------------
 */
 
-export default [toast, backOnFinish, hidePreloader, showPreloader, errorAlert];
+export default [toast, backOnFinish, hidePreloader, showPreloader, errorAlert, fooBar];

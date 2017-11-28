@@ -1,6 +1,7 @@
 import { connect } from 'preact-redux';
 import UsersEdit from './UsersEdit';
 import metalize from '../../../helpers/metalize';
+import before from '../../../helpers/before';
 
 import { services } from '../../../feathers';
 
@@ -22,6 +23,18 @@ const metas = {
     toastOnFinish: {
       text: 'Usuário editado com sucesso!'
     }
+  },
+  remove: {
+    showPreloader: true,
+    errorAlert: true,
+    backOnFinish: true,
+    toastOnFinish: {
+      text: 'Usuário excluído com sucesso!'
+    },
+    confirmDialog: {
+      title: 'Atenção',
+      message: 'Tem certeza que deseja prosseguir com a exclusão?'
+    }
   }
 };
 
@@ -36,6 +49,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
+  remove: metalize(metas.remove, before(services.users.remove)),
   patch:  metalize(metas.patch, services.users.patch),
   get:    metalize(metas.get, services.users.get)
 };

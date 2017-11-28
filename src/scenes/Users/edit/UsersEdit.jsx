@@ -24,7 +24,7 @@ class UsersCreate extends Component {
   }
 
   render() {
-    const { users, patch } = this.props;
+    const { users, patch, remove } = this.props;
 
     return (
       <Page name="EditUser" >
@@ -46,6 +46,10 @@ class UsersCreate extends Component {
               <Input name="Password" type="password" label="Password" placeholder="********" />
             </F7Form>
           </Form>
+
+          <Block>
+            <Button fill big title="Deletar" onClick={() => remove(users.get.data._id)} />
+          </Block>
 
           <Block>
             <Button fill big title="Salvar" onClick={() => patch(users.get.data._id, this.state.user)} />
