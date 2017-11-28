@@ -8,6 +8,7 @@ import UsersList from './scenes/Users/list';
 import UsersCreate from './scenes/Users/create';
 import UsersEdit from './scenes/Users/edit';
 import Signup from './scenes/Signup';
+import NotFound from './scenes/NotFound';
 import { startAuthentication } from './feathers';
 
 /**
@@ -73,6 +74,7 @@ const Root = () => (
           <Route path="/users/new" component={UsersCreate} />
           <Route path="/users/:id" component={UsersEdit} />
           <Route path="/signup" component={Signup} />
+          <Route path="(.*)" component={NotFound} />
         </Router>
       </View>
     </Framework7>
