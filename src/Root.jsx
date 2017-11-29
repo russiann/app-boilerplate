@@ -79,6 +79,7 @@ const Root = () => (
       <View>
         <Router>
           <Route path="/" component={HomePage} />
+          <Route path="/home" component={HomePage} />
           
           <Route path="/signin" component={Signin} />
           <Route path="/signup" component={Signup} />

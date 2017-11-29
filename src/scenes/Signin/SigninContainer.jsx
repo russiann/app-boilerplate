@@ -13,7 +13,8 @@ import { services } from '../../feathers';
 const metas = {
   authenticate: {
     showPreloader: true,
-    errorAlert: true
+    errorAlert: true,
+    redirectTo: '/home'
   }
 };
 

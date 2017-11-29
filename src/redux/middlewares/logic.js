@@ -109,7 +109,7 @@ const errorAlert = createLogic({
 |--------------------------------------------------
 */
 
-const fooBar = createLogic({
+const before = createLogic({
   type: /^BEFORE_PROCCESS_FEATHERS_PAYLOAD$/,
   latest: true,
   process({ getState, action }, dispatch, next) {
@@ -129,8 +129,28 @@ const fooBar = createLogic({
 
 /**
 |--------------------------------------------------
+| Foo
+|--------------------------------------------------
+*/
+
+const redirectTo = createLogic({
+  type: /^SERVICES_AUTHENTICATION_AUTHENTICATE_FULFILLED$/,
+  latest: true,
+  process({ getState, action }, dispatch, next) {
+
+    const { name, message } = action.payload;
+    const meta = action.meta;
+    if (meta && meta.redirectTo) {
+      window.instance.router.navigate({ url: meta.redirectTo });
+    }
+
+  }
+});
+
+/**
+|--------------------------------------------------
 | Export
 |--------------------------------------------------
 */
 
-export default [toast, backOnFinish, hidePreloader, showPreloader, errorAlert, fooBar];
+export default [toast, backOnFinish, hidePreloader, showPreloader, errorAlert, before, redirectTo];
