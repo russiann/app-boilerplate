@@ -35,9 +35,6 @@ class UsersCreate extends Component {
         <Navbar
           title="Edit User"
           subtitle={this.getUserName(users)}
-          left={<Icon ifIos="material:list" ifMaterial="material:menu" navbarIcon openPanel />}
-          disableBackButton
-          leftOpenModal="left"
         />
 
         <Block title="Users Infos" />

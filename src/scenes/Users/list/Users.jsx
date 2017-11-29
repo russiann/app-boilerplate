@@ -30,12 +30,7 @@ class Users extends Component {
 
     return (
       <Page name="Users" >
-        <Navbar
-          title="Users"
-          left={<Icon ifIos="material:list" ifMaterial="material:menu" navbarIcon openPanel />}
-          disableBackButton
-          leftOpenModal="left"
-        />
+        <Navbar title="Users" />
 
         <If condition={ users.store && users.store.records }>
 

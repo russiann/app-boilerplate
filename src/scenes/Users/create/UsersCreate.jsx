@@ -26,9 +26,6 @@ class UsersCreate extends Component {
       <Page name="NewUser" >
         <Navbar
           title="New User"
-          left={<Icon ifIos="material:list" ifMaterial="material:menu" navbarIcon openPanel />}
-          disableBackButton
-          leftOpenModal="left"
         />
         
 

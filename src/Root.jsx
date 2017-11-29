@@ -30,7 +30,7 @@ import F7 from 'framework7/dist/js/framework7.min';
 
 const params = {
   // theme: 'md',
-  view: { pushState: false, animate: true, preloadPreviousPage: false }
+  view: { pushState: false, animate: true, preloadPreviousPage: true }
 };
 
 const Container = ({theme = 'black', children}) => (
