@@ -18,7 +18,7 @@ import methodReducer from './methodReducer';
 */
 
 // const API_ENDPOINT = 'http://138.197.109.16:4000';
-const API_ENDPOINT = 'http://localhost:3030';
+const API_ENDPOINT = 'http://192.168.0.10:3030';
 
 export const socketClient = feathers()
   .configure(socketio(io(API_ENDPOINT)))

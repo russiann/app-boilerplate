@@ -7,6 +7,7 @@ import HomePage from './scenes/Home';
 import UsersList from './scenes/Users/list';
 import UsersCreate from './scenes/Users/create';
 import UsersEdit from './scenes/Users/edit';
+import RolesList from './scenes/Roles/list';
 import Signup from './scenes/Signup';
 import NotFound from './scenes/NotFound';
 import { startAuthentication } from './feathers';
@@ -29,8 +30,17 @@ import F7 from 'framework7/dist/js/framework7.min';
 */
 
 const params = {
-  // theme: 'md',
-  view: { pushState: false, animate: true, preloadPreviousPage: true }
+  // theme: 'ios',
+  view: {
+    pushState: false,
+    animate: true,
+    // preloadPreviousPage: true,
+    // stackPages: true,
+    materialPageLoadDelay: 300,
+    iosDynamicNavbar: false,
+    // removeElements: false,
+    removeElementsWithTimeout: true,
+  }
 };
 
 const Container = ({theme = 'black', children}) => (
@@ -69,11 +79,16 @@ const Root = () => (
       <View>
         <Router>
           <Route path="/" component={HomePage} />
+          
           <Route path="/signin" component={Signin} />
+          <Route path="/signup" component={Signup} />
+
           <Route path="/users" component={UsersList} protected={auth} />
           <Route path="/users/new" component={UsersCreate} />
           <Route path="/users/:id" component={UsersEdit} />
-          <Route path="/signup" component={Signup} />
+
+          <Route path="/roles" component={RolesList} />
+          
           <Route path="(.*)" component={NotFound} />
         </Router>
       </View>

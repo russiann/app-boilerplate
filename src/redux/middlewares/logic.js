@@ -74,7 +74,7 @@ const hidePreloader = createLogic({
   process({ getState, action }, dispatch, next) {
 
     if (action.meta && action.meta.showPreloader) {
-      app().preloader.hide();
+      setTimeout(app().preloader.hide, 500);
     }
 
     next(action);
